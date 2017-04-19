@@ -1,8 +1,11 @@
 package com.example.yvtc.s041903;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -35,5 +38,21 @@ public class MainActivity extends AppCompatActivity {
         EditText ed = (EditText) findViewById(R.id.editText);
         editor.putString("username", ed.getText().toString());
         editor.commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add("Settings");
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getTitle().equals("Settings"))
+        {
+            Intent it = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(it);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
