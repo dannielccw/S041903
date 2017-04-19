@@ -2,6 +2,7 @@ package com.example.yvtc.s041903;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     {
         SharedPreferences sp = getSharedPreferences("mydata", MODE_PRIVATE);
         String str = sp.getString("username", "");
+
+        SharedPreferences sp2 = PreferenceManager.getDefaultSharedPreferences(this);
+        str = sp2.getString("account", "");
         TextView tv = (TextView) findViewById(R.id.textView);
         tv.setText(str);
     }
